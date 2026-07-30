@@ -250,7 +250,7 @@ Multicarril │                                              │ + Cristal Ácid
 
     <section>
         <h2>4. Galería del Proyecto</h2>
-        <p>Estado actual del patio y referencias visuales.</p>
+        <p>Estado actual del patio, renderizados 3D y referencias visuales del cerramiento.</p>
         <div class="photo-grid" id="photo-gallery">
             <!-- Las fotos se cargarán aquí dinámicamente -->
         </div>
@@ -292,11 +292,10 @@ Multicarril │                                              │ + Cristal Ácid
         <h2>Panel de Control del Proyecto</h2>
         
         <div class="control-section">
-            <h3>Añadir Foto (URL)</h3>
-            <p style="font-size: 0.8em; color: #666;">Para evitar saturar la memoria local del navegador, añade enlaces directos a imágenes (ej. enlaces de Google Photos o Imgur).</p>
+            <h3>Añadir Foto (URL o Nombre de Archivo)</h3>
             <div class="form-group">
-                <label>URL de la imagen:</label>
-                <input type="text" id="photoUrl" placeholder="https://ejemplo.com/mifoto.jpg">
+                <label>Nombre de archivo o URL de la imagen:</label>
+                <input type="text" id="photoUrl" placeholder="ejemplo.jpg o https://...">
             </div>
             <button class="btn-submit" onclick="addPhoto()">Añadir Foto</button>
         </div>
@@ -331,7 +330,7 @@ Multicarril │                                              │ + Cristal Ácid
             <button class="btn-submit" onclick="addComment()">Añadir al Glosario</button>
         </div>
         
-        <button class="btn-admin" style="background:#e74c3c; color:white; border:none;" onclick="clearData()">Borrar todos los datos locales</button>
+        <button class="btn-admin" style="background:#e74c3c; color:white; border:none;" onclick="clearData()">Restablecer datos locales</button>
     </div>
 </div>
 
@@ -344,22 +343,41 @@ Multicarril │                                              │ + Cristal Ácid
         { concept: "Cristal Templado al Ácido", explanation: "Cristal de alta seguridad que ha sido tratado para volverse translúcido (efecto hielo). Deja pasar la luz del sol pero impide que el vecino vea hacia adentro." }
     ];
 
+    // Galería por defecto incluyendo fotos del patio, cierre moderno y render 3D
+    const defaultPhotos = [
+        'lado sur.jpg',
+        'lado este.jpg',
+        'lado norte.jpg',
+        'lado oeste.jpg',
+        'Cierre moderno .jpg',
+        'Gemini_Generated_Image_4tb5w34tb5w34tb5.png'
+    ];
+
     // INICIALIZACIÓN DE DATOS DESDE LOCALSTORAGE
     let appData = JSON.parse(localStorage.getItem('rfqData')) || {
-        photos: [],
+        photos: defaultPhotos,
         offers: [],
         comments: defaultComments
     };
+
+    // Si la lista guardada en localStorage no incluye las imágenes avanzadas, las sincronizamos
+    if (!appData.photos || !appData.photos.includes('Cierre moderno .jpg')) {
+        appData.photos = defaultPhotos;
+        localStorage.setItem('rfqData', JSON.stringify(appData));
+    }
 
     // FUNCIONES DE RENDERIZADO
     function renderApp() {
         // Render Fotos
         const photoGrid = document.getElementById('photo-gallery');
         photoGrid.innerHTML = '';
-        if(appData.photos.length === 0) photoGrid.innerHTML = '<p style="color:#7f8c8d; grid-column: 1 / -1;">No hay fotos subidas. Usa el panel de control para añadirlas.</p>';
-        appData.photos.forEach(url => {
-            photoGrid.innerHTML += `<img src="${url}" alt="Foto del proyecto" class="photo-item">`;
-        });
+        if(appData.photos.length === 0) {
+            photoGrid.innerHTML = '<p style="color:#7f8c8d; grid-column: 1 / -1;">No hay fotos disponibles.</p>';
+        } else {
+            appData.photos.forEach(url => {
+                photoGrid.innerHTML += `<img src="${encodeURI(url)}" alt="Foto del proyecto" class="photo-item" onerror="this.style.display='none'">`;
+            });
+        }
 
         // Render Ofertas
         const offersTbody = document.querySelector('#offers-table tbody');
@@ -446,9 +464,9 @@ Multicarril │                                              │ + Cristal Ácid
     }
 
     function clearData() {
-        if(confirm("¿Estás seguro de que deseas borrar todas las fotos, ofertas y glosario personalizado? Esta acción no se puede deshacer.")) {
+        if(confirm("¿Deseas restablecer los datos por defecto? Esto actualizará la lista de fotos e imágenes iniciales.")) {
             localStorage.removeItem('rfqData');
-            appData = { photos: [], offers: [], comments: defaultComments };
+            appData = { photos: defaultPhotos, offers: [], comments: defaultComments };
             renderApp();
             closeModal();
         }
