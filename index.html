@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFQ Ejecutivo - Cerramiento de Patio</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--primary); font-size: 2.2em; margin-bottom: 5px; }
+        .subtitle { color: #7f8c8d; font-size: 1.2em; margin-top: 0; }
+        
+        h2 {
+            color: var(--primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .tech-summary {
+            background-color: #f1f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary);
+            margin-bottom: 30px;
+        }
+
+        .tech-summary ul { margin: 0; padding-left: 20px; }
+        
+        pre {
+            background: #2d3436;
+            color: #f5f6fa;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .photo-item {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        th { background-color: var(--primary); color: white; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Proyecto de Cerramiento Autoportante</h1>
+        <p class="subtitle">RFQ Ejecutivo: Reconversión de patio exterior en estancia habitable anexa a la cocina.</p>
+    </header>
+
+    <section>
+        <h2>1. Datos Clave del Proyecto</h2>
+        <div class="tech-summary">
+            <ul>
+                <li><strong>Ubicación:</strong> Torrelodones, Madrid (Clima de sierra: necesidad de alta resistencia a nieve/viento e invierno frío).</li>
+                <li><strong>Superficie:</strong> 15 m² (5,00 m x 3,00 m).</li>
+                <li><strong>Altura Libre:</strong> 2,30 m.</li>
+                <li><strong>Uso:</strong> Extensión de cocina / Comedor informal / Sala de lectura / Zona luminosa habitable todo el año.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>2. Esquema de Distribución y Privacidad</h2>
+<pre>
+                       [ NORTE - Lado C (3,00 m) ]
+              2,00 m Panel Opaco + 1,00 m Ventana Ventilación
+            ┌──────────────────────────────────────────────┐
+            │                                              │
+[ OESTE ]   │                                              │   [ ESTE ]
+Lado D (5m) │               NUEVA HABITACIÓN               │ Lado B (5m)
+Corredera   │                    15 m²                     │ Zócalo Opaco
+Multicarril │                                              │ + Cristal Ácido
++ Puerta    │                                              │ (Privacidad)
+            └──────────────────────────────────────────────┘
+                       [ SUR - Lado A (3,00 m) ]
+              Fachada Casa / Ventana + Pasamuros A.A. Pingüino
+</pre>
+    </section>
+
+    <section>
+        <h2>3. Especificaciones Técnicas Resumidas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Partida / Elemento</th>
+                    <th>Descripción de la Solución</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Estructura y Techo (15 m²)</strong></td>
+                    <td>Aluminio extruido autoportante reforzado + Panel Sándwich aislante (60-80mm) + Lucernario UV.</td>
+                </tr>
+                <tr>
+                    <td><strong>Lado B (Medianera 5 m)</strong></td>
+                    <td>Zócalo ciego inferior + Cristal templado fijo al ácido (Privacidad vecino).</td>
+                </tr>
+                <tr>
+                    <td><strong>Lado C (División 3 m)</strong></td>
+                    <td>Frontal combinado (Panel opaco aislante + Módulo de ventilación practicable).</td>
+                </tr>
+                <tr>
+                    <td><strong>Lado D (Frente Principal 5 m)</strong></td>
+                    <td>Corredera panorámica multicarril traslúcida/transparente + Puerta con llave.</td>
+                </tr>
+                <tr>
+                    <td><strong>Accesorios y Montaje</strong></td>
+                    <td>Pasamuros hermético Ø125mm para climatizador, sellados de poliuretano e instalación completa.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>4. Galería del Proyecto</h2>
+        <p>Estado actual del patio, renderizados 3D y referencias visuales del cerramiento.</p>
+        <div class="photo-grid">
+            <img src="lado sur.jpg" alt="Fachada Sur" class="photo-item" onerror="this.style.display='none'">
+            <img src="lado este.jpg" alt="Medianera Este" class="photo-item" onerror="this.style.display='none'">
+            <img src="lado norte.jpg" alt="Frente Norte" class="photo-item" onerror="this.style.display='none'">
+            <img src="lado oeste.jpg" alt="Salida Oeste" class="photo-item" onerror="this.style.display='none'">
+            <img src="Cierre moderno .jpg" alt="Referencia de Cierre Moderno" class="photo-item" onerror="this.style.display='none'">
+            <img src="Gemini_Generated_Image_4tb5w34tb5w34tb5.png" alt="Renderizado 3D del Proyecto" class="photo-item" onerror="this.style.display='none'">
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
