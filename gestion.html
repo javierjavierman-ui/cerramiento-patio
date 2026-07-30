@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RFQ Ejecutivo - Cerramiento de Patio</title>
+    <title>Gestión Interna - RFQ Cerramiento de Patio</title>
     <style>
-        /* Diseño General y Variables */
         :root {
             --primary: #2c3e50;
             --secondary: #3498db;
@@ -31,9 +30,9 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 5px solid #e74c3c; /* Distintivo visual para el panel privado */
         }
 
-        /* Encabezados */
         header {
             text-align: center;
             border-bottom: 3px solid var(--secondary);
@@ -42,7 +41,7 @@
         }
 
         h1 { color: var(--primary); font-size: 2.2em; margin-bottom: 5px; }
-        .subtitle { color: #7f8c8d; font-size: 1.2em; margin-top: 0; }
+        .subtitle { color: #e74c3c; font-size: 1.2em; margin-top: 0; font-weight: bold; }
         
         h2 {
             color: var(--primary);
@@ -51,7 +50,6 @@
             margin-top: 40px;
         }
 
-        /* Bloques de información técnica */
         .tech-summary {
             background-color: #f1f8ff;
             padding: 20px;
@@ -71,7 +69,6 @@
             font-size: 0.9em;
         }
 
-        /* Cuadrícula de Fotos */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -85,9 +82,9 @@
             object-fit: cover;
             border-radius: 8px;
             border: 1px solid var(--border-color);
+            background-color: #e9ecef;
         }
 
-        /* Tablas */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -103,7 +100,6 @@
         th { background-color: var(--primary); color: white; }
         tr:nth-child(even) { background-color: #f8f9fa; }
 
-        /* Comentarios / Glosario */
         .comment-box {
             background: #fff;
             border: 1px solid var(--border-color);
@@ -115,34 +111,33 @@
 
         .comment-box strong { color: var(--secondary); font-size: 1.1em; display: block; margin-bottom: 5px;}
 
-        /* Pie de página y Botón Administrador */
         footer {
             text-align: center;
             margin-top: 50px;
             padding-top: 20px;
             border-top: 1px solid var(--border-color);
-            color: #95a5a6;
         }
 
         .btn-admin {
-            background-color: transparent;
-            border: 1px solid #bdc3c7;
-            color: #7f8c8d;
-            padding: 5px 15px;
-            border-radius: 20px;
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
             transition: all 0.3s;
         }
 
-        .btn-admin:hover { background-color: #ecf0f1; }
+        .btn-admin:hover { background-color: #1a252f; }
 
-        /* Panel de Control (Modal) */
         .modal {
             display: none;
             position: fixed;
             z-index: 1000;
             left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.7);
         }
 
         .modal-content {
@@ -173,7 +168,6 @@
             padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;
         }
         .btn-submit:hover { background-color: #2980b9; }
-
     </style>
 </head>
 <body>
@@ -181,89 +175,36 @@
 <div class="container">
     <header>
         <h1>Proyecto de Cerramiento Autoportante</h1>
-        <p class="subtitle">RFQ Ejecutivo: Reconversión de patio exterior en estancia habitable anexa a la cocina.</p>
+        <p class="subtitle">🔒 PANEL DE GESTIÓN PRIVADO - NO COMPARTIR</p>
     </header>
 
     <section>
         <h2>1. Datos Clave del Proyecto</h2>
         <div class="tech-summary">
             <ul>
-                <li><strong>Ubicación:</strong> Torrelodones, Madrid (Clima de sierra: necesidad de alta resistencia a nieve/viento e invierno frío).</li>
+                <li><strong>Presupuesto Máximo:</strong> 5.000 € (con margen estratégico del 20% hasta 6.000 €).</li>
                 <li><strong>Superficie:</strong> 15 m² (5,00 m x 3,00 m).</li>
                 <li><strong>Altura Libre:</strong> 2,30 m.</li>
-                <li><strong>Uso:</strong> Extensión de cocina / Comedor informal / Sala de lectura / Zona luminosa habitable todo el año.</li>
+                <li><strong>Uso:</strong> Extensión de cocina / Comedor informal / Sala de lectura.</li>
             </ul>
         </div>
     </section>
 
     <section>
-        <h2>2. Esquema de Distribución y Privacidad</h2>
-<pre>
-                       [ NORTE - Lado C (3,00 m) ]
-              2,00 m Panel Opaco + 1,00 m Ventana Ventilación
-            ┌──────────────────────────────────────────────┐
-            │                                              │
-[ OESTE ]   │                                              │   [ ESTE ]
-Lado D (5m) │               NUEVA HABITACIÓN               │ Lado B (5m)
-Corredera   │                    15 m²                     │ Zócalo Opaco
-Multicarril │                                              │ + Cristal Ácido
-+ Puerta    │                                              │ (Privacidad)
-            └──────────────────────────────────────────────┘
-                       [ SUR - Lado A (3,00 m) ]
-              Fachada Casa / Ventana + Pasamuros A.A. Pingüino
-</pre>
-    </section>
-
-    <section>
-        <h2>3. Especificaciones Técnicas Resumidas</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Partida / Elemento</th>
-                    <th>Descripción de la Solución</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Estructura y Techo (15 m²)</strong></td>
-                    <td>Aluminio extruido autoportante reforzado + Panel Sándwich aislante (60-80mm) + Lucernario UV.</td>
-                </tr>
-                <tr>
-                    <td><strong>Lado B (Medianera 5 m)</strong></td>
-                    <td>Zócalo ciego inferior + Cristal templado fijo al ácido (Privacidad vecino).</td>
-                </tr>
-                <tr>
-                    <td><strong>Lado C (División 3 m)</strong></td>
-                    <td>Frontal combinado (Panel opaco aislante + Módulo de ventilación practicable).</td>
-                </tr>
-                <tr>
-                    <td><strong>Lado D (Frente Principal 5 m)</strong></td>
-                    <td>Corredera panorámica multicarril traslúcida/transparente + Puerta con llave.</td>
-                </tr>
-                <tr>
-                    <td><strong>Accesorios y Montaje</strong></td>
-                    <td>Pasamuros hermético Ø125mm para climatizador, sellados de poliuretano e instalación completa.</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section>
-        <h2>4. Galería del Proyecto</h2>
-        <p>Estado actual del patio, renderizados 3D y referencias visuales del cerramiento.</p>
+        <h2>2. Galería del Proyecto</h2>
         <div class="photo-grid" id="photo-gallery">
             <!-- Las fotos se cargarán aquí dinámicamente -->
         </div>
     </section>
 
     <section>
-        <h2>5. Registro de Ofertas Recibidas</h2>
+        <h2>3. Registro de Ofertas Recibidas</h2>
         <table id="offers-table">
             <thead>
                 <tr>
                     <th>Proveedor</th>
                     <th>Importe Ofertado (€)</th>
-                    <th>Detalles / Notas</th>
+                    <th>Detalles / Notas Internas</th>
                 </tr>
             </thead>
             <tbody>
@@ -273,15 +214,14 @@ Multicarril │                                              │ + Cristal Ácid
     </section>
 
     <section>
-        <h2>6. Glosario y Aclaraciones Técnicas</h2>
-        <p>Sección destinada a aclarar conceptos técnicos para una lectura comprensible del proyecto.</p>
+        <h2>4. Glosario y Aclaraciones Técnicas</h2>
         <div id="comments-container">
             <!-- Los comentarios se cargarán aquí dinámicamente -->
         </div>
     </section>
 
     <footer>
-        <button class="btn-admin" onclick="openModal()">Gestión del Proyecto (Panel de Control)</button>
+        <button class="btn-admin" onclick="openModal()">Abrir Panel de Control</button>
     </footer>
 </div>
 
@@ -289,97 +229,74 @@ Multicarril │                                              │ + Cristal Ácid
 <div id="adminModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
-        <h2>Panel de Control del Proyecto</h2>
+        <h2>Panel de Control Interno</h2>
         
-        <div class="control-section">
-            <h3>Añadir Foto (URL o Nombre de Archivo)</h3>
-            <div class="form-group">
-                <label>Nombre de archivo o URL de la imagen:</label>
-                <input type="text" id="photoUrl" placeholder="ejemplo.jpg o https://...">
-            </div>
-            <button class="btn-submit" onclick="addPhoto()">Añadir Foto</button>
-        </div>
-
         <div class="control-section">
             <h3>Registrar Nueva Oferta</h3>
             <div class="form-group">
                 <label>Nombre del Proveedor:</label>
-                <input type="text" id="offerProvider" placeholder="Ej. Aluminios Torrelodones">
+                <input type="text" id="offerProvider" placeholder="Ej. Aluminios de la Sierra">
             </div>
             <div class="form-group">
                 <label>Importe (€):</label>
                 <input type="text" id="offerAmount" placeholder="Ej. 5400">
             </div>
             <div class="form-group">
-                <label>Notas/Detalles:</label>
-                <textarea id="offerNotes" rows="2" placeholder="Ej. Incluye IVA y montaje en 2 semanas"></textarea>
+                <label>Notas Estratégicas:</label>
+                <textarea id="offerNotes" rows="2" placeholder="Ej. Cristal de baja emisividad incluido."></textarea>
             </div>
             <button class="btn-submit" onclick="addOffer()">Guardar Oferta</button>
         </div>
 
         <div class="control-section">
-            <h3>Añadir Término al Glosario</h3>
+            <h3>Añadir Apunte Técnico / Glosario</h3>
             <div class="form-group">
-                <label>Concepto (Término técnico):</label>
+                <label>Concepto:</label>
                 <input type="text" id="commentConcept" placeholder="Ej. Rotura de Puente Térmico">
             </div>
             <div class="form-group">
-                <label>Explicación (Para no técnicos):</label>
-                <textarea id="commentExplanation" rows="3" placeholder="Explicación sencilla del término..."></textarea>
+                <label>Explicación:</label>
+                <textarea id="commentExplanation" rows="3" placeholder="Nota técnica sobre el material..."></textarea>
             </div>
-            <button class="btn-submit" onclick="addComment()">Añadir al Glosario</button>
+            <button class="btn-submit" onclick="addComment()">Guardar Apunte</button>
         </div>
         
-        <button class="btn-admin" style="background:#e74c3c; color:white; border:none;" onclick="clearData()">Restablecer datos locales</button>
+        <button class="btn-admin" style="background:#e74c3c; color:white; border:none; padding: 10px;" onclick="clearData()">Purgar Tabla de Ofertas</button>
     </div>
 </div>
 
 <script>
-    // ESTADO INICIAL (Diccionario Técnico Precargado)
     const defaultComments = [
-        { concept: "Estructura Autoportante", explanation: "Significa que la estructura de aluminio tiene fuerza suficiente para sostenerse sobre sus propios pilares sin necesidad de cargar peso sobre los muros de los vecinos o dañar la estructura de la casa." },
-        { concept: "Panel Sándwich (60-80mm)", explanation: "Un panel de techo formado por dos chapas metálicas con espuma aislante inyectada en medio. Es vital en la sierra de Madrid para que el frío exterior no pase al interior en invierno." },
-        { concept: "Corredera Panorámica Multicarril", explanation: "Sistema de cristaleras donde cada hoja corre por su propia guía. Permite apilar casi todos los cristales a un lado, dejando el patio completamente abierto en los días de buen tiempo." },
-        { concept: "Cristal Templado al Ácido", explanation: "Cristal de alta seguridad que ha sido tratado para volverse translúcido (efecto hielo). Deja pasar la luz del sol pero impide que el vecino vea hacia adentro." }
+        { concept: "Cristal Bajo Emisivo", explanation: "Imprescindible pedirlo. Refleja el calor hacia dentro en invierno y hacia fuera en verano." },
+        { concept: "Techo Panel Sándwich", explanation: "Debemos exigir un mínimo de 60 mm a 80 mm de grosor inyectado para aislar correctamente la sala de lectura." }
     ];
 
-    // Galería por defecto incluyendo fotos del patio, cierre moderno y render 3D
     const defaultPhotos = [
-        'lado sur.jpg',
-        'lado este.jpg',
-        'lado norte.jpg',
-        'lado oeste.jpg',
-        'Cierre moderno .jpg',
+        'lado%20sur.JPG',
+        'lado%20este.JPG',
+        'lado%20norte.JPG',
+        'lado%20oeste.JPG',
+        'Cierre%20moderno%20.jpg',
         'Gemini_Generated_Image_4tb5w34tb5w34tb5.png'
     ];
 
-    // INICIALIZACIÓN DE DATOS DESDE LOCALSTORAGE
-    let appData = JSON.parse(localStorage.getItem('rfqData')) || {
+    let appData = JSON.parse(localStorage.getItem('rfqPrivateData')) || {
         photos: defaultPhotos,
         offers: [],
         comments: defaultComments
     };
 
-    // Si la lista guardada en localStorage no incluye las imágenes avanzadas, las sincronizamos
-    if (!appData.photos || !appData.photos.includes('Cierre moderno .jpg')) {
+    if (!appData.photos || appData.photos.length === 0) {
         appData.photos = defaultPhotos;
-        localStorage.setItem('rfqData', JSON.stringify(appData));
     }
 
-    // FUNCIONES DE RENDERIZADO
     function renderApp() {
-        // Render Fotos
         const photoGrid = document.getElementById('photo-gallery');
         photoGrid.innerHTML = '';
-        if(appData.photos.length === 0) {
-            photoGrid.innerHTML = '<p style="color:#7f8c8d; grid-column: 1 / -1;">No hay fotos disponibles.</p>';
-        } else {
-            appData.photos.forEach(url => {
-                photoGrid.innerHTML += `<img src="${encodeURI(url)}" alt="Foto del proyecto" class="photo-item" onerror="this.style.display='none'">`;
-            });
-        }
+        appData.photos.forEach(url => {
+            photoGrid.innerHTML += `<img src="${url}" alt="Foto del proyecto" class="photo-item">`;
+        });
 
-        // Render Ofertas
         const offersTbody = document.querySelector('#offers-table tbody');
         offersTbody.innerHTML = '';
         if(appData.offers.length === 0) {
@@ -395,7 +312,6 @@ Multicarril │                                              │ + Cristal Ácid
             });
         }
 
-        // Render Comentarios
         const commentsContainer = document.getElementById('comments-container');
         commentsContainer.innerHTML = '';
         appData.comments.forEach(comment => {
@@ -408,26 +324,14 @@ Multicarril │                                              │ + Cristal Ácid
     }
 
     function saveData() {
-        localStorage.setItem('rfqData', JSON.stringify(appData));
+        localStorage.setItem('rfqPrivateData', JSON.stringify(appData));
         renderApp();
     }
 
-    // FUNCIONES DEL MODAL (Panel de Control)
     const modal = document.getElementById("adminModal");
     function openModal() { modal.style.display = "block"; }
     function closeModal() { modal.style.display = "none"; }
     window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
-
-    // LÓGICA DE INSERCIÓN DE DATOS
-    function addPhoto() {
-        const urlInput = document.getElementById('photoUrl');
-        if(urlInput.value.trim() !== '') {
-            appData.photos.push(urlInput.value.trim());
-            saveData();
-            urlInput.value = '';
-            alert("Foto añadida correctamente.");
-        }
-    }
 
     function addOffer() {
         const provider = document.getElementById('offerProvider');
@@ -442,9 +346,7 @@ Multicarril │                                              │ + Cristal Ácid
             });
             saveData();
             provider.value = ''; amount.value = ''; notes.value = '';
-            alert("Oferta guardada correctamente.");
-        } else {
-            alert("Por favor, rellena al menos el Proveedor y el Importe.");
+            closeModal();
         }
     }
 
@@ -459,23 +361,20 @@ Multicarril │                                              │ + Cristal Ácid
             });
             saveData();
             concept.value = ''; explanation.value = '';
-            alert("Término añadido al glosario.");
+            closeModal();
         }
     }
 
     function clearData() {
-        if(confirm("¿Deseas restablecer los datos por defecto? Esto actualizará la lista de fotos e imágenes iniciales.")) {
-            localStorage.removeItem('rfqData');
+        if(confirm("¿Purgar todas las ofertas y apuntes técnicos?")) {
+            localStorage.removeItem('rfqPrivateData');
             appData = { photos: defaultPhotos, offers: [], comments: defaultComments };
             renderApp();
             closeModal();
         }
     }
 
-    // Renderizar al cargar la página
     document.addEventListener("DOMContentLoaded", renderApp);
-
 </script>
-
 </body>
 </html>
