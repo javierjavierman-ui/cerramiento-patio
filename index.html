@@ -110,7 +110,28 @@
             margin-top: 20px;
         }
         .markdown-body ul { padding-left: 20px; }
-        .markdown-body code { background-color: #eee; padding: 2px 4px; border-radius: 4px; }
+        
+        /* Ajuste para texto en código inline (fondo gris claro, letra oscura) */
+        .markdown-body code { 
+            background-color: #eee; 
+            padding: 2px 4px; 
+            border-radius: 4px; 
+            color: #333;
+        }
+        
+        /* Ajuste CLAVE para los bloques de código y esquemas (fondo oscuro, letra clara) */
+        .markdown-body pre {
+            background-color: #2d3436;
+            color: #f5f6fa;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .markdown-body pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -133,36 +154,16 @@
         </div>
     </section>
 
+    <!-- SECCIÓN DINÁMICA: RESUMEN EJECUTIVO (MD) -->
     <section>
-        <h2>2. Esquema de Distribución y Privacidad</h2>
-<pre>
-                       [ NORTE - Lado C (3,00 m) ]
-                       Anclado a fachada completo
-             ┌──────────────────────────────────────────────┐
-             │                                              │
-[ OESTE ]    │                                              │ [ ESTE ]
-Lado D       │               NUEVA HABITACIÓN               │ Lado B (5,40 m total)
-(5,40 m)     │                   16,2 m²                    │ ├─ B1 (2,00 m): Acceso Cocina
-Fijo         │                                              │ │
-Zócalo opaco │                                              │ └─ B2 (3,40 m): Corredera
-+ Cristal    │                                              │    Panorámica Completa
-Ácido        │                                              │
-             └──────────────────────────────────────────────┘
-                       [ SUR - Lado A (3,00 m) ]
-                 Fachada Principal de la Vivienda / AA
-</pre>
-    </section>
-
-    <!-- NUEVA SECCIÓN DINÁMICA -->
-    <section>
-        <h2>3. Revisión de la Especificación</h2>
+        <h2>2. Revisión de la Especificación (Actualizado)</h2>
         <div id="md-content" class="tech-summary markdown-body" style="background-color: #fef9e7; border-left-color: #f1c40f;">
             <p style="color: #7f8c8d; font-style: italic;">El documento de especificaciones técnicas no ha sido cargado aún.</p>
         </div>
     </section>
 
     <section>
-        <h2>4. Especificaciones Técnicas Resumidas</h2>
+        <h2>3. Especificaciones Técnicas Resumidas</h2>
         <table>
             <thead>
                 <tr>
@@ -196,7 +197,7 @@ Zócalo opaco │                                              │ └─ B2 (3,
     </section>
 
     <section>
-        <h2>5. Galería del Proyecto y Renders</h2>
+        <h2>4. Galería del Proyecto y Renders</h2>
         <p>Estado actual del patio, detalles de encuentros y renderizado 3D de la distribución de 16,2 m².</p>
         <div class="photo-grid">
             <img src="lado%20sur.JPG" alt="Fachada Sur" class="photo-item">
