@@ -145,7 +145,7 @@
             margin: 5% auto;
             padding: 30px;
             width: 90%;
-            max-width: 600px;
+            max-width: 700px;
             border-radius: 10px;
             max-height: 85vh;
             overflow-y: auto;
@@ -160,12 +160,19 @@
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9em; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: inherit;
+        }
+        
+        /* Estilo monoespaciado para el editor Markdown */
+        textarea.markdown-editor {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            background-color: #fcfcfc;
         }
 
         .btn-submit {
             background-color: var(--secondary); color: white; border: none;
-            padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;
+            padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-right: 10px;
         }
         .btn-submit:hover { background-color: #2980b9; }
     </style>
@@ -179,13 +186,13 @@
     </header>
 
     <section>
-        <h2>1. Datos Clave del Proyecto</h2>
+        <h2>1. Datos Clave del Proyecto (Estrategia Interna)</h2>
         <div class="tech-summary">
             <ul>
-                <li><strong>Presupuesto Máximo:</strong> 5.000 € (con margen estratégico del 20% hasta 6.000 €).</li>
-                <li><strong>Superficie:</strong> 15 m² (5,00 m x 3,00 m).</li>
+                <li><strong>Presupuesto Máximo Objetivo:</strong> 5.000 € (con margen estratégico del 20% hasta 6.000 €).</li>
+                <li><strong>Superficie Definitiva:</strong> 16,2 m² ($5,40\text{ m} \times 3,00\text{ m}$).</li>
                 <li><strong>Altura Libre:</strong> 2,30 m.</li>
-                <li><strong>Uso:</strong> Extensión de cocina / Comedor informal / Sala de lectura.</li>
+                <li><strong>Ubicación:</strong> Torrelodones, Madrid (Alta exigencia RPT).</li>
             </ul>
         </div>
     </section>
@@ -231,6 +238,17 @@
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <h2>Panel de Control Interno</h2>
         
+        <!-- NUEVA SECCIÓN: REVISIÓN DE LA ESPECIFICACION -->
+        <div class="control-section" style="background-color: #fef9e7; padding: 20px; border-radius: 8px; border: 1px solid #f9e79f;">
+            <h3>🛠️ REVISIÓN DE LA ESPECIFICACION (Público)</h3>
+            <div class="form-group">
+                <label>Pega aquí el Resumen Ejecutivo de Modificaciones en formato .md:</label>
+                <textarea id="adminMdSummary" class="markdown-editor" rows="12" placeholder="# Resumen Ejecutivo..."></textarea>
+            </div>
+            <button class="btn-submit" onclick="saveMdSummary()">Actualizar en Web Pública</button>
+            <small style="color: #7f8c8d;">Este texto se mostrará en index.html para suministradores.</small>
+        </div>
+
         <div class="control-section">
             <h3>Registrar Nueva Oferta</h3>
             <div class="form-group">
@@ -252,129 +270,11 @@
             <h3>Añadir Apunte Técnico / Glosario</h3>
             <div class="form-group">
                 <label>Concepto:</label>
-                <input type="text" id="commentConcept" placeholder="Ej. Rotura de Puente Térmico">
-            </div>
-            <div class="form-group">
-                <label>Explicación:</label>
-                <textarea id="commentExplanation" rows="3" placeholder="Nota técnica sobre el material..."></textarea>
-            </div>
-            <button class="btn-submit" onclick="addComment()">Guardar Apunte</button>
-        </div>
-        
-        <button class="btn-admin" style="background:#e74c3c; color:white; border:none; padding: 10px;" onclick="clearData()">Purgar Tabla de Ofertas</button>
-    </div>
-</div>
+                <input type="text" id="commentConcept" placeholder="Ej. Rotura de Puente TérmicoAquí tienes la visión 3D detallada y a escala de la nueva habitación resultante de $16{,}2\text{ m}^2$. He ajustado la perspectiva y los paramentos para reflejar fielmente las últimas modificaciones técnicas que hemos definido en el RFQ:
 
-<script>
-    const defaultComments = [
-        { concept: "Cristal Bajo Emisivo", explanation: "Imprescindible pedirlo. Refleja el calor hacia dentro en invierno y hacia fuera en verano." },
-        { concept: "Techo Panel Sándwich", explanation: "Debemos exigir un mínimo de 60 mm a 80 mm de grosor inyectado para aislar correctamente la sala de lectura." }
-    ];
+*   **Lado D (Oeste - Izquierda):** Se aprecia el paramento fijo de privacidad con la linde del vecino, compuesto por el zócalo opaco inferior y los paneles superiores de cristal ácido, que tamizan la luz manteniendo total reserva.
+*   **Lado B (Este - Derecha):** He incluido el tramo B1 ($2{,}00\text{ m}$) anclado a la fachada envolviendo la puerta de la cocina, y el tramo B2 ($3{,}40\text{ m}$) con el sistema corredero panorámico de cristal transparente.
+*   **Lado C (Norte - Frente):** Aparece completamente anclado y sellado a la fachada principal del edificio.
+*   **Cubierta Estratégica:** Se visualiza el techo de panel sándwich aislante blanco mate con la franja de lucernario superior pegada a la casa para garantizar la iluminación de tu cocina en Torrelodones.
 
-    const defaultPhotos = [
-        'lado%20sur.JPG',
-        'lado%20este.JPG',
-        'lado%20norte.JPG',
-        'lado%20oeste.JPG',
-        'Cierre%20moderno%20.jpg',
-        'Gemini_Generated_Image_4tb5w34tb5w34tb5.png'
-    ];
-
-    let appData = JSON.parse(localStorage.getItem('rfqPrivateData')) || {
-        photos: defaultPhotos,
-        offers: [],
-        comments: defaultComments
-    };
-
-    if (!appData.photos || appData.photos.length === 0) {
-        appData.photos = defaultPhotos;
-    }
-
-    function renderApp() {
-        const photoGrid = document.getElementById('photo-gallery');
-        photoGrid.innerHTML = '';
-        appData.photos.forEach(url => {
-            photoGrid.innerHTML += `<img src="${url}" alt="Foto del proyecto" class="photo-item">`;
-        });
-
-        const offersTbody = document.querySelector('#offers-table tbody');
-        offersTbody.innerHTML = '';
-        if(appData.offers.length === 0) {
-            offersTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#7f8c8d;">Aún no se han registrado ofertas.</td></tr>';
-        } else {
-            appData.offers.forEach(offer => {
-                offersTbody.innerHTML += `
-                    <tr>
-                        <td><strong>${offer.provider}</strong></td>
-                        <td>${offer.amount} €</td>
-                        <td>${offer.notes}</td>
-                    </tr>`;
-            });
-        }
-
-        const commentsContainer = document.getElementById('comments-container');
-        commentsContainer.innerHTML = '';
-        appData.comments.forEach(comment => {
-            commentsContainer.innerHTML += `
-                <div class="comment-box">
-                    <strong>${comment.concept}</strong>
-                    <p style="margin:0;">${comment.explanation}</p>
-                </div>`;
-        });
-    }
-
-    function saveData() {
-        localStorage.setItem('rfqPrivateData', JSON.stringify(appData));
-        renderApp();
-    }
-
-    const modal = document.getElementById("adminModal");
-    function openModal() { modal.style.display = "block"; }
-    function closeModal() { modal.style.display = "none"; }
-    window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
-
-    function addOffer() {
-        const provider = document.getElementById('offerProvider');
-        const amount = document.getElementById('offerAmount');
-        const notes = document.getElementById('offerNotes');
-        
-        if(provider.value.trim() !== '' && amount.value.trim() !== '') {
-            appData.offers.push({
-                provider: provider.value.trim(),
-                amount: amount.value.trim(),
-                notes: notes.value.trim()
-            });
-            saveData();
-            provider.value = ''; amount.value = ''; notes.value = '';
-            closeModal();
-        }
-    }
-
-    function addComment() {
-        const concept = document.getElementById('commentConcept');
-        const explanation = document.getElementById('commentExplanation');
-        
-        if(concept.value.trim() !== '' && explanation.value.trim() !== '') {
-            appData.comments.push({
-                concept: concept.value.trim(),
-                explanation: explanation.value.trim()
-            });
-            saveData();
-            concept.value = ''; explanation.value = '';
-            closeModal();
-        }
-    }
-
-    function clearData() {
-        if(confirm("¿Purgar todas las ofertas y apuntes técnicos?")) {
-            localStorage.removeItem('rfqPrivateData');
-            appData = { photos: defaultPhotos, offers: [], comments: defaultComments };
-            renderApp();
-            closeModal();
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", renderApp);
-</script>
-</body>
-</html>
+Como acordamos, he ajustado el código de `index.html` para integrar esta visión y el resumen de especificaciones en tu web pública.
