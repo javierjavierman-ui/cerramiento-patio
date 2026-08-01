@@ -238,7 +238,7 @@
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <h2>Panel de Control Interno</h2>
         
-        <!-- NUEVA SECCIÓN: REVISIÓN DE LA ESPECIFICACION -->
+        <!-- SECCIÓN: REVISIÓN DE LA ESPECIFICACION -->
         <div class="control-section" style="background-color: #fef9e7; padding: 20px; border-radius: 8px; border: 1px solid #f9e79f;">
             <h3>🛠️ REVISIÓN DE LA ESPECIFICACION (Público)</h3>
             <div class="form-group">
@@ -270,11 +270,148 @@
             <h3>Añadir Apunte Técnico / Glosario</h3>
             <div class="form-group">
                 <label>Concepto:</label>
-                <input type="text" id="commentConcept" placeholder="Ej. Rotura de Puente TérmicoAquí tienes la visión 3D detallada y a escala de la nueva habitación resultante de $16{,}2\text{ m}^2$. He ajustado la perspectiva y los paramentos para reflejar fielmente las últimas modificaciones técnicas que hemos definido en el RFQ:
+                <input type="text" id="commentConcept" placeholder="Ej. Rotura de Puente Térmico">
+            </div>
+            <div class="form-group">
+                <label>Explicación:</label>
+                <textarea id="commentExplanation" rows="3" placeholder="Nota técnica sobre el material..."></textarea>
+            </div>
+            <button class="btn-submit" onclick="addComment()">Guardar Apunte</button>
+        </div>
+        
+        <button class="btn-admin" style="background:#e74c3c; color:white; border:none; padding: 10px;" onclick="clearData()">Purgar Tabla de Ofertas</button>
+    </div>
+</div>
 
-*   **Lado D (Oeste - Izquierda):** Se aprecia el paramento fijo de privacidad con la linde del vecino, compuesto por el zócalo opaco inferior y los paneles superiores de cristal ácido, que tamizan la luz manteniendo total reserva.
-*   **Lado B (Este - Derecha):** He incluido el tramo B1 ($2{,}00\text{ m}$) anclado a la fachada envolviendo la puerta de la cocina, y el tramo B2 ($3{,}40\text{ m}$) con el sistema corredero panorámico de cristal transparente.
-*   **Lado C (Norte - Frente):** Aparece completamente anclado y sellado a la fachada principal del edificio.
-*   **Cubierta Estratégica:** Se visualiza el techo de panel sándwich aislante blanco mate con la franja de lucernario superior pegada a la casa para garantizar la iluminación de tu cocina en Torrelodones.
+<script>
+    const defaultComments = [
+        { concept: "Cristal Bajo Emisivo", explanation: "Imprescindible pedirlo. Refleja el calor hacia dentro en invierno y hacia fuera en verano." },
+        { concept: "Techo Panel Sándwich", explanation: "Exigir un mínimo de 80 mm para aislar correctamente la sala en Torrelodones." }
+    ];
 
-Como acordamos, he ajustado el código de `index.html` para integrar esta visión y el resumen de especificaciones en tu web pública.
+    const defaultPhotos = [
+        'lado%20sur.JPG',
+        'lado%20este.JPG',
+        'lado%20norte.JPG',
+        'lado%20oeste.JPG',
+        'Cierre%20moderno%20.jpg',
+        'Gemini_Generated_Image_4tb5w34tb5w34tb5.png'
+    ];
+
+    let appData = JSON.parse(localStorage.getItem('rfqPrivateData')) || {
+        photos: defaultPhotos,
+        offers: [],
+        comments: defaultComments
+    };
+
+    if (!appData.photos || appData.photos.length === 0) {
+        appData.photos = defaultPhotos;
+    }
+
+    function renderApp() {
+        // Renderizar fotos
+        const photoGrid = document.getElementById('photo-gallery');
+        photoGrid.innerHTML = '';
+        appData.photos.forEach(url => {
+            photoGrid.innerHTML += `<img src="${url}" alt="Foto del proyecto" class="photo-item">`;
+        });
+
+        // Renderizar tabla de ofertas
+        const offersTbody = document.querySelector('#offers-table tbody');
+        offersTbody.innerHTML = '';
+        if(appData.offers.length === 0) {
+            offersTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#7f8c8d;">Aún no se han registrado ofertas.</td></tr>';
+        } else {
+            appData.offers.forEach(offer => {
+                offersTbody.innerHTML += `
+                    <tr>
+                        <td><strong>${offer.provider}</strong></td>
+                        <td>${offer.amount} €</td>
+                        <td>${offer.notes}</td>
+                    </tr>`;
+            });
+        }
+
+        // Renderizar glosario
+        const commentsContainer = document.getElementById('comments-container');
+        commentsContainer.innerHTML = '';
+        appData.comments.forEach(comment => {
+            commentsContainer.innerHTML += `
+                <div class="comment-box">
+                    <strong>${comment.concept}</strong>
+                    <p style="margin:0;">${comment.explanation}</p>
+                </div>`;
+        });
+        
+        // Cargar el Markdown guardado previamente en el textarea, si existe
+        const savedMd = localStorage.getItem('rfqMdSummary');
+        if (savedMd) {
+            document.getElementById('adminMdSummary').value = savedMd;
+        }
+    }
+
+    function saveData() {
+        localStorage.setItem('rfqPrivateData', JSON.stringify(appData));
+        renderApp();
+    }
+
+    // Lógica del Modal
+    const modal = document.getElementById("adminModal");
+    function openModal() { modal.style.display = "block"; }
+    function closeModal() { modal.style.display = "none"; }
+    window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
+
+    function addOffer() {
+        const provider = document.getElementById('offerProvider');
+        const amount = document.getElementById('offerAmount');
+        const notes = document.getElementById('offerNotes');
+        
+        if(provider.value.trim() !== '' && amount.value.trim() !== '') {
+            appData.offers.push({
+                provider: provider.value.trim(),
+                amount: amount.value.trim(),
+                notes: notes.value.trim()
+            });
+            saveData();
+            provider.value = ''; amount.value = ''; notes.value = '';
+            closeModal();
+        }
+    }
+
+    function addComment() {
+        const concept = document.getElementById('commentConcept');
+        const explanation = document.getElementById('commentExplanation');
+        
+        if(concept.value.trim() !== '' && explanation.value.trim() !== '') {
+            appData.comments.push({
+                concept: concept.value.trim(),
+                explanation: explanation.value.trim()
+            });
+            saveData();
+            concept.value = ''; explanation.value = '';
+            closeModal();
+        }
+    }
+
+    // NUEVA FUNCIÓN: Guarda el Markdown y avisa al usuario
+    function saveMdSummary() {
+        const mdText = document.getElementById('adminMdSummary').value;
+        localStorage.setItem('rfqMdSummary', mdText);
+        alert("¡Actualizado con éxito! El resumen de modificaciones ya está disponible en tu web pública para los suministradores.");
+        closeModal();
+    }
+
+    function clearData() {
+        if(confirm("¿Purgar todas las ofertas y apuntes técnicos?")) {
+            localStorage.removeItem('rfqPrivateData');
+            appData = { photos: defaultPhotos, offers: [], comments: defaultComments };
+            renderApp();
+            closeModal();
+        }
+    }
+
+    // Inicializar la app al cargar
+    document.addEventListener("DOMContentLoaded", renderApp);
+</script>
+</body>
+</html>
